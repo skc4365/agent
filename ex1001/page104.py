@@ -19,9 +19,9 @@ def answer_question(state: State):
 def decide_next_node(state: State):
     # 입력 텍스트에 '질문'이라는 단어가 있으면 answer 노드로, 없으면 종료
     if "질문" in state["text"]:
-        return "answer"
+        return "has_question"
     else:
-        return "end"
+        return "no_question"
 
 # 4. 그래프 생성 및 노드 추가
 workflow = StateGraph(State)
@@ -37,8 +37,8 @@ workflow.add_conditional_edges(
     "check",             # 시작 노드
     decide_next_node,    # 다음 노드를 결정할 라우팅 함수
     {
-        "answer": "answer", # 라우팅 함수 반환값 : 이동할 노드 이름
-        "end": END
+        "has_question": "answer", # 라우팅 함수 반환값 : 이동할 노드 이름
+        "no_question": END
     }
 )
 
@@ -48,10 +48,13 @@ workflow.add_edge("answer", END)
 # ------------------ 그래프 -----------------
 # graph TD;
 #         __start__([<p>__start__</p>]):::first
-#         chatbot(chatbot)
+#         check(check)
+#         answer(answer)
 #         __end__([<p>__end__</p>]):::last
-#         __start__ --> chatbot;
-#         chatbot --> __end__;
+#         __start__ --> check;
+#         check -. &nbsp;no_question&nbsp; .-> __end__;
+#         check -. &nbsp;has_question&nbsp; .-> answer;
+#         answer --> __end__;
 #         classDef default fill:#f2f0ff,line-height:1.2
 #         classDef first fill-opacity:0
 #         classDef last fill:#bfb6fc
@@ -59,6 +62,7 @@ workflow.add_edge("answer", END)
 
 # 6. 그래프 컴파일
 app = workflow.compile()
+print(app.get_graph().draw_mermaid())
 print("^^^page104 챗봇서비스를 시작합니다 ^^^")
 
 
