@@ -4,6 +4,8 @@ from langgraph.graph import END, START, StateGraph
 
 from .page100 import State
 
+# 그래프의 모양을 출력해보자
+
 class State(TypedDict):
     messages: Annotated[list[str], add]
 

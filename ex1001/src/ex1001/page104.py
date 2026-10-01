@@ -1,6 +1,9 @@
 from typing import TypedDict
 from langgraph.graph import StateGraph, END
 
+# ### 교재내용과 다르게 수정되었음 ###
+# 그래프의 모양을 출력해보자
+
 # 1. 상태(State) 정의
 class State(TypedDict):
     text: str
