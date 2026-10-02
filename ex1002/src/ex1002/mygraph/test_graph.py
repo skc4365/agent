@@ -1,6 +1,4 @@
 from langgraph.graph import StateGraph, MessagesState, START, END
-from dotenv import load_dotenv
-load_dotenv()
 
 def mock_llm(state: MessagesState):
     return {"messages": [{"role": "ai", "content": "hello world"}]}
@@ -13,5 +11,11 @@ graph = graph.compile()
 
 # 실행
 result = graph.invoke({"messages": [{"role": "user", "content": "hi!"}]})
+
+# ----------------------------
+# 결과
 print(result)
 print(f"AIMessage: {result["messages"][-1].content}")
+
+# 머메이드로 그렸음.
+print(graph.get_graph().draw_mermaid())
