@@ -51,6 +51,7 @@ class BasicToolNode:
     def __init__(self, tools: list) -> None:
         self.tools_by_name = {tool.name: tool for tool in tools} # ["tavily_search" : TavilySearch()]
 
+    # inputs: dict를 객체처럼 사용하기 위해서.
     def __call__(self, inputs: dict):
         if messages := inputs.get("messages", []): # [ 1 ]
             message = messages[-1]

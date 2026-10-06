@@ -15,6 +15,9 @@ advanced_model = ChatOpenAI(model="gpt-4o")
 
 
 # ===== 미들웨어 정의 =====
+# @wrap_model_call 
+#       역할: LLM 모델 호출 과정 사이에 개입하는 '미들웨어'임을 프레임워크에 등록함.
+#       동작: LLM에 요청을 보내기 직전에, 이 함수를 자동으로 가로채서(Intercept) 먼저 실행함.
 @wrap_model_call # [ 2 ]
 def dynamic_model_selection(request: ModelRequest, handler) -> ModelResponse:
     """대화 복잡도에 따라 모델을 동적으로 선택하는 미들웨어"""
