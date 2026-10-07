@@ -4,6 +4,7 @@ from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 from langchain.agents.middleware import wrap_model_call, ModelRequest, ModelResponse
 
+# 내가 작성한 툴 사용
 from tools import tools
 
 load_dotenv()

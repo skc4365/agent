@@ -39,10 +39,16 @@ def chatbot(state: State):
 graph_builder.add_node("chatbot", chatbot)
 
 #### 도구 실행 노드 ####
+# BasicToolNode가 필요한 경우는 다음과 같습니다.
+# - 도구 실행 원리를 학습할 때
+# - 실행 전 권한 검사나 사용자 승인을 추가할 때
+# - 결과 형식이나 오류 처리를 특별히 변경할 때
+# - 특정 도구의 호출 기록이나 제한을 직접 구현할 때
 
 import json
 from langchain_core.messages import ToolMessage
 
+# 
 class BasicToolNode:
     """
         마지막 AIMessage에서 요청된 도구를 실행하는 노드
