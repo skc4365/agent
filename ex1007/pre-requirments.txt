@@ -1,0 +1,15 @@
+ipykernel
+pandas
+python-dotenv
+langchain-openai
+langgraph
+langgraph-cli[inmem]
+grandalf
+langchain
+langchain-tavily
+tools
+fastmcp
+markitdown
+pydantic
+langchain[mcp]
+markitdown[all]
