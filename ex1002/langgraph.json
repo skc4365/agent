@@ -1,0 +1,8 @@
+{
+    "dependencies": ["."],
+    "graphs": {
+    "test_graph": "./src/ex1002/mygraph/test_graph.py:graph"
+    },
+    "env": ".env"
+}
+

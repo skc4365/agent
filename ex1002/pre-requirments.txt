@@ -2,4 +2,6 @@ pandas
 python-dotenv
 langchain-openai
 langgraph
+langchain-core
+langgraph-cli[inmem]
 grandalf

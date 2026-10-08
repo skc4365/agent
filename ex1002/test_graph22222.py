@@ -1,12 +1,11 @@
 from langgraph.graph import END, START, MessagesState, StateGraph
 
-
-def mock_llm(state: MessagesState):
+def mock_llm2222222(state: MessagesState):
     return {"messages": [{"role": "ai", "content": "hello world"}]}
 
 
 builder = StateGraph(MessagesState)
-builder.add_node("mock_llm", mock_llm)
+builder.add_node("mock_llm", mock_llm2222222)
 builder.add_edge(START, "mock_llm")
 builder.add_edge("mock_llm", END)
 
@@ -35,11 +34,11 @@ if __name__ == "__main__":
 
 # langgraph.json
     # {
-    #     "dependencies": ["."],
-    #     "graphs": {
-    #     "test_graph": "./src/ex1002/mygraph/test_graph.py:graph"
-    #     },
-    #     "env": ".env"
+    #   "dependencies": ["."],
+    #   "graphs": {
+    #     "test_graph22222": "./test_graph22222.py:graph"
+    #   },
+    #   "env": ".env"
     # }
 
 # json파일 기준으로 같은경로에 .env파일이 있어야함.
